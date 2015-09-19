@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+	    {% if title %}
+	    <title>{{ title }} - microblog</title>
+	    {% else %}
+	    <title>microblog</title>
+	    {% endif %}
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+      <!--Import jQuery before materialize.js-->
+	<div class="navbar-fixed">
+	    <nav>
+	      <div class="nav-wrapper">
+		<a href="#!" class="brand-logo">jOB pORTAL</a>
+		<ul class="right hide-on-med-and-down">
+		  {% if 'email' in session %}
+		  <li><a href="{{ url_for('index') }}">Profile</a></li>
+		  <li><a href="{{ url_for('signout') }}">Sign Out</a></li>
+		  {% else %}
+		  <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+		  <li><a href="{{ url_for('signin') }}">Sign In</a></li>
+		  {% endif %}
+		</ul>
+	      </div>
+	    </nav>
+	  </div>
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+  </html>

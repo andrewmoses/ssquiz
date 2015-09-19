@@ -1,0 +1,86 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Welcome</h2>
+{% if 'topass' in session %}
+
+<div class = "row">
+  <form class="col s12" action="{{ url_for('creator') }}" method=post>
+    {{ form.hidden_tag() }}
+    <div class = "row">
+      <div class = "input-field col s6">
+        {{ form.creator(class_="validate",required = true) }}
+
+        <label for="creator" data-error="wrong" data-success="right">Enter your name</label>
+
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "input-field col s6">
+        {{ form.creator1(class_="validate",required = true) }}
+
+        <label for="creator1" data-error="wrong" data-success="right">Enter book with chapter</label>
+
+      </div>
+    </div>
+
+    <div class = "row">
+      <div class = "input-field col s12">
+        {{ form.originalquestion(class_="materialize-textarea",required = true) }}
+
+        <label for="originalquestion" data-error="wrong" data-success="right">Type your questions here</label>
+
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "input-field col s12">
+        {{ form.originalanswer(class_="materialize-textarea",required = true) }}
+
+        <label for="originalanswer" data-error="wrong" data-success="right">Type your answers here</label>
+
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn waves-effect waves-light teal lighten-2" type="submit" name="action">Submit<i class="material-icons right">send</i>
+      </button>
+    </div>
+
+  </form>
+</div>
+
+
+
+{% else %}
+<div class = "row">
+  <form class="col s12" action="{{ url_for('creator') }}" method=post>
+    {{ form.hidden_tag() }}
+    <div class = "row">
+      <div class = "input-field col s6">
+        {% if form.password.errors %}
+          {{ form.password(class_="validate invalid",type="password",autofocus = true) }}
+          {% for message in form.password.errors %}
+          <label for="password" data-error={{ message }} data-success="right" class="active">Password</label>
+          {% endfor %}
+        {% else %}
+
+        {{ form.password(class_="validate",type="password") }}
+
+        <label for="password" data-error="wrong" data-success="right">Password</label>
+        {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn waves-effect waves-light teal lighten-2" type="submit" name="action">Submit<i class="material-icons right">send</i>
+      </button>
+    </div>
+
+  </form>
+</div>
+
+
+
+
+{% endif %}
+
+{% endblock %}

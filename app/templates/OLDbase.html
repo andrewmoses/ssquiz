@@ -1,0 +1,44 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - microblog</title>
+    {% else %}
+    <title>microblog</title>
+    {% endif %}
+  </head>
+  <body>
+	  <header>
+	    <div class="container">
+	      <h1 class="logo">Flask App</h1>
+	      <nav>
+		<ul class="menu">
+		  
+		  
+		  
+		  {% if 'email' in session %}
+		  <li><a href="{{ url_for('index') }}">Profile</a></li>
+		  <li><a href="{{ url_for('signout') }}">Sign Out</a></li>
+		  {% else %}
+		  <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+		  <li><a href="{{ url_for('signin') }}">Sign In</a></li>
+		  {% endif %}
+		</ul>
+	      </nav>
+	    </div>
+	  </header>
+
+
+
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

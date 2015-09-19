@@ -1,0 +1,20 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<br>
+<div class = "row center-align">
+<a href="{{ url_for('creator') }}" class="waves-effect waves-light btn teal lighten-2">Create a question</a>
+
+</div>
+<div class = "row center-align">
+<a href="{{ url_for('answers') }}" class="waves-effect waves-light btn teal lighten-2">View Answers</a>
+
+</div>
+
+
+
+
+
+{% endblock %}

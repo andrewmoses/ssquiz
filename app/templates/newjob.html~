@@ -1,0 +1,89 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Create a job</h2>
+ 
+  {% for message in form.job_title.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+   
+  {% for message in form.job_lastdate.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.job_vaccancies.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.job_lookingfor.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.job_ctc.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.job_contract.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.job_workingdays.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.job_refer.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.job_desc.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.job_skills.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.job_company.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+   
+  <form action="{{ url_for('newjob') }}" method=post>
+    {{ form.hidden_tag() }}
+     
+    {{ form.job_title.label }}
+    {{ form.job_title }}
+     
+    {{ form.job_lastdate.label }}
+    {{ form.job_lastdate }}
+
+    {{ form.job_vaccancies.label }}
+    {{ form.job_vaccancies }}
+
+    {{ form.job_lookingfor.label }}
+    {{ form.job_lookingfor }}
+
+    {{ form.job_ctc.label }}
+    {{ form.job_ctc }}
+
+    {{ form.job_contract.label }}
+    {{ form.job_contract }}
+
+    {{ form.job_workingdays.label }}
+    {{ form.job_workingdays }}
+
+    {{ form.job_refer.label }}
+    {{ form.job_refer }}
+
+    {{ form.job_desc.label }}
+    {{ form.job_desc }}
+
+    {{ form.job_skills.label }}
+    {{ form.job_skills }}
+
+    {{ form.job_company.label }}
+    {{ form.job_company }}
+     
+    {{ form.submit }}
+  </form>
+{% endblock %}

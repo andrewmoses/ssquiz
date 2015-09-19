@@ -1,0 +1,45 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Today's question</h2><h3>{{head}}</h3>
+    <p>
+{% for ee in questions %}
+
+      {{ ee }}
+      <br>
+      {% endfor %}
+
+    </p>
+<div class = "row">
+  <form class="col s12" action="{{ url_for('replies') }}" method=post>
+    {{ form.hidden_tag() }}
+    <div class = "row">
+      <div class = "input-field col s6">
+        {{ form.creator(class_="validate",required = true) }}
+
+        <label for="creator" data-error="wrong" data-success="right">Enter your name</label>
+
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "input-field col s12">
+        {{ form.originalquestion(class_="materialize-textarea",required = true) }}
+
+        <label for="originalquestion" data-error="wrong" data-success="right">Type your answers here</label>
+
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn waves-effect waves-light teal lighten-2" type="submit" name="action">Submit<i class="material-icons right">send</i>
+      </button>
+    </div>
+
+  </form>
+</div>
+
+
+
+
+
+{% endblock %}

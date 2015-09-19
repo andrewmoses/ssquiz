@@ -1,0 +1,28 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+{% for each in arch %}
+<div class="row">
+        <div class="col s12">
+          <div class="card blue-grey">
+            <div class="card-content white-text">
+              <span class="card-title" style="text-transform: uppercase; font-weight: bold;">{{each.ahead}}</span><br>
+              <strong>Questions</strong>
+              <p>{{each.aquest}}</p><br>
+              <strong>Answers</strong>
+              <p>{{each.aqa}}
+            </div>
+            <div class="card-action">
+              <a href="#">{{each.acreator}}</a>
+	      <a href="#"><span class="right-align">{{each.atime}}</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endfor %}
+
+
+
+
+{% endblock %}

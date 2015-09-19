@@ -1,0 +1,98 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h2>Profile<h2>
+{% if jobid=="null" %}
+
+<div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content">
+              <span class="card-title">The job id is {{ jobid }}</span>
+
+            </div>
+
+          </div>
+        </div>
+</div>
+
+<h2>Create a Stage</h2>
+
+  {% for message in form.stage_title.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.stage_incharge.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+<div class = "row">
+<form class = "col s12" action="{{ url_for('stages',jobid=jobty) }}" method=post>
+    {{ form.hidden_tag() }}
+
+    <div class = "row">
+      <div class = "input-field col s12">
+        {{ form.stage_title(required=true) }}
+        <label for="stage_title">Stage Title</label>
+      </div>
+    </div>
+    <div class = "row">
+     <div class="input-field col s12">
+       {{ form.stage_incharge }}
+       <label for="stage_incharge">Select a person</label>
+
+
+     </div> 
+   </div>
+   <div class="row">
+     <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons">send</i>
+     </button>
+   </div>
+</form>
+</div>
+
+
+
+{% elif jobid and jobid!="null" %}
+
+<div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content">
+              <span class="card-title">We are in elif block</span>
+
+            </div>
+
+          </div>
+        </div>
+</div>
+
+
+{% else %}
+<div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content">
+              <span class="card-title">Don't change the url</span>
+
+            </div>
+
+          </div>
+        </div>
+</div>
+
+
+
+{% endif %}
+
+
+
+
+
+
+
+
+
+{% endblock %}

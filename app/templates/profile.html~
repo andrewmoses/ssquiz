@@ -1,0 +1,14 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="jumbo">
+    <h2>Profile<h2>
+    <h3>This is {{ session['email'] }}'s profile page</h3>
+    <a href="{{ url_for('newjob') }}" class="waves-effect waves-light btn">Create a job</a>
+    <a href="{{ url_for('alljobs') }}" class="waves-effect waves-light btn">View all jobs</a>
+    
+    
+
+  </div>
+{% endblock %}
